@@ -1,18 +1,18 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
 
-class		Zombie
-{
+class		Zombie {
+
 	public:
-		Zombie(std::string name);
-		~Zombie();
-		std::string z_name;
-		std::string z_type;
+		Zombie(std::string name, std::string type);
+		~Zombie( void );
 
-	void		announce(void);
+		std::string		name;
+		std::string		type;
+
+		void			announce( void ) const ;
 };
 
 #endif

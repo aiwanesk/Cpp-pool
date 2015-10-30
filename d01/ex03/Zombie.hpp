@@ -6,12 +6,14 @@
 class		Zombie {
 
 	public:
-		Zombie(std::string name, std::string type);
+		Zombie( void );
 		~Zombie( void );
 
 		std::string		name;
 		std::string		type;
+		static int		nbr;
 
+		std::string		randomName( void ) const;
 		void			announce( void ) const ;
 };
 

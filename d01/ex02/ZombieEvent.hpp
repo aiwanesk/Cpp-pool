@@ -1,15 +1,20 @@
 #ifndef ZOMBIEEVENT_HPP
 # define ZOMBIEEVENT_HPP
 
-#include "Zombie.hpp"
+# include "Zombie.hpp"
+# include <string>
 
-class		ZombieEvent
-{
-	std::string		p_type;
+class		ZombieEvent {
 
 	public:
-		void	setZombieType(std::string);
-		Zombie	*setZombie(std::string);
+		ZombieEvent( void );
+		~ZombieEvent( void );
+
+		std::string		type;
+
+		void			setZombieType(std::string type);
+		Zombie			*newZombie(std::string name);
+
 };
 
 #endif

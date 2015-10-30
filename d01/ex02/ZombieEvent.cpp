@@ -1,28 +1,18 @@
-#include "Zombie.hpp"
 #include "ZombieEvent.hpp"
+#include "Zombie.hpp"
+#include <string>
 
-void	ZombieEvent::setZombieType(std::string type)
-{
-	this->p_type = type;
+ZombieEvent::ZombieEvent( void ) {
 }
 
-Zombie	*ZombieEvent::setZombie(std::string name)
-{
-	Zombie	*newzombie = new Zombie(name);
-	return newzombie;
+ZombieEvent::~ZombieEvent( void ) {
 }
 
-ZombieEvent::ZombieEvent(void)
-{
-	std::cout << "new Zombie" << std::endl;
+void		ZombieEvent::setZombieType(std::string type) {
+	this->type = type;
 }
 
-ZombieEvent::~ZombieEvent(void)
-{
-	std::cout << "Zombie destroyed" << std::endl;
-}
-
-void		Zombie::announce(void)
-{
-	std::cout << "<" + this->z_name + "(" << this->z_type + ")> " << "Braiiiiiiiinnnssss"<< std::endl;
+Zombie		*ZombieEvent::newZombie(std::string name) {
+	Zombie *ret = new Zombie(name, this->type);
+	return ret;
 }

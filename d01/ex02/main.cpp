@@ -1,37 +1,41 @@
 #include "ZombieEvent.hpp"
 #include "Zombie.hpp"
-#include <cstdlib>
+#include <ctime>
 #include <iostream>
-#include <time.h>
-#include <stdlib.h>
+#include <string>
+#include <time.h> // supp
+#include <stdlib.h> // supp
+#include <stdio.h> //supp
 
-std::string	randomName(void)
-{
-	std::string names[] =
-	{
-		"Jean", "Paul", "Pierre", "Huges", "Henry"
+void	randomChump( void ) {
+
+	std::string		tab[] = {
+		"Michel",
+		"Jean",
+		"Bernard",
+		"Nathan",
+		"ZombieBatman",
+		"SuperZombie",
+		"Brigitte",
+		"Bobby",
+		"Zorro",
+		"Kenny",
 	};
-	srand(time(NULL));
-	int i = rand() % 5;
-	return (names[i]);
+
+	srand(time(NULL)); //-> change into std::srand(std::time(0));
+	ZombieEvent event = ZombieEvent();
+	event.setZombieType("Random");
+	Zombie *randomZombie = event.newZombie(tab[(rand() % 10)]); // change rand() into std::rand()
+	randomZombie->announce();
+	delete randomZombie;
 }
 
-void	randomChump(void)
+int		main( void )
 {
-	std::cout << "randomChump called" << std::endl;
-	Zombie *newZombie = new Zombie(randomName());
-	newZombie->z_type = "Weak";
-	newZombie->announce();
-	delete newZombie;
-}
-
-int		main(void)
-{
-	std::cout << "HEAP" << std::endl;
+	std::cout << "On the stack" << std::endl;
+	Zombie bob = Zombie("Bob", "MAD");
+	bob.announce();
+	std::cout << "On the heap" << std::endl;
 	randomChump();
-	std::cout << "STACK" << std::endl;
-	Zombie noob = noob.setZombie("Jean-Merlin");
-	noob.z_type = noob.setZombieType("Belgium");
-	noob.announce();
-	return (0);
+	return 0;
 }
