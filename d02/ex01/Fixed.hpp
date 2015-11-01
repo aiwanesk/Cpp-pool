@@ -10,7 +10,6 @@ class		Fixed
 	private:
 		int			_storage;
 		const int	_frac;
-		//static cont int _frac
 	public:
 		Fixed(void);
 		Fixed(const int param);
@@ -22,7 +21,6 @@ class		Fixed
 		Fixed	&operator=(Fixed const & rhs);
 		float	toFloat(void) const;
 		int		toInt(void) const;
-		//overload to the operator that inserts a floating point repreentation of the fixed point value into the paramameter output stream
 };
 
 std::ostream & operator<<(std::ostream & op, Fixed const & integ);
