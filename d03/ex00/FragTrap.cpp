@@ -11,6 +11,14 @@ FragTrap::~FragTrap(void)
 	std::cout << "FragTrap " << this->_name << " is destroyed!" << std::endl;
 }
 
+void	FragTrap::beRepaired(unsigned int amount)
+{
+	this->_hp = this->_hp + amount;
+	if (this->_hp > 100)
+		this->_hp = 100;
+	std::cout << "FR4G-TP <" << this->_name << "> is repaired is new amount of hp is " << this->_hp << std::endl;
+}
+
 void	FragTrap::meleeAttack(std::string const & target)
 {
 	std::cout << "FR4G-TP <" << this->_name << "> attacks <" << target << "> at melee, causing <" << this->_mele_at << "> points of damage !" << std::endl;
@@ -35,4 +43,16 @@ void	FragTrap::takeDamage(unsigned int amount)
 	{
 		std::cout << "FR4G-TP has " << this->_hp << " left" << std::endl;
 	}
+}
+
+unsigned int	FragTrap::vaulthunter_dot_exe(std::string const & target)
+{
+	if (this->_ep < 25)
+	{
+		std::cout << this->_name << "doesnt have enough energy to launch a random attack" << std::endl;
+		return 0;
+	}
+	this->_ep = this->_ep - 25;
+	std::cout << this->_name << "uses a random attack" << std::endl;
+	
 }
