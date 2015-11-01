@@ -19,7 +19,7 @@ Fixed::Fixed(Fixed const & source) : storage(0)
 int		Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBitsts member function called" << std::endl;
-	return this->frac;
+	return this->storage;
 }
 
 void	Fixed::setRawBits(int const raw)
