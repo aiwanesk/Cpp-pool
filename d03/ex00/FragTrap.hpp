@@ -7,7 +7,7 @@
 
 class	FragTrap
 {
-	private:
+	protected:
 		int		_hp;
 		int		_max_hp;
 		int		_ep;
@@ -17,6 +17,7 @@ class	FragTrap
 		int		_mele_at;
 		int		_range_at;
 		int		_armor;
+		std::string	_type;
 	public:
 		FragTrap(std::string name);
 		~FragTrap(void);

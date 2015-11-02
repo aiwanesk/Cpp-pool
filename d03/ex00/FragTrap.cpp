@@ -3,7 +3,8 @@
 FragTrap::FragTrap(std::string name)
 {
 	this->_name = name;
-	std::cout << "Constructor called...\nFragTrap cretated\nMy name is " << this->_name << std::endl;
+	this->_type = "FragTrap";
+	std::cout << "Constructor called...\n"<< this->_type <<"cretated\nMy name is " << this->_name << std::endl;
 	this->_hp = 100;
 	this->_max_hp = 100;
 	this->_ep = 100;
