@@ -45,14 +45,22 @@ void	FragTrap::takeDamage(unsigned int amount)
 	}
 }
 
-unsigned int	FragTrap::vaulthunter_dot_exe(std::string const & target)
+void	FragTrap::vaulthunter_dot_exe(std::string const & target)
 {
 	if (this->_ep < 25)
 	{
 		std::cout << this->_name << "doesnt have enough energy to launch a random attack" << std::endl;
-		return 0;
+		return ;
 	}
 	this->_ep = this->_ep - 25;
-	std::cout << this->_name << "uses a random attack" << std::endl;
-	
+	srand(time(NULL));
+	int	random = rand() % 5;
+	std::string tab[] = {
+		"Kawabunga",
+		"Lolxd",
+		"MDR",
+		"PDPDPD",
+		"Je ne sais pas"
+	};
+	std::cout << this->_name << "uses a random attack <" << tab[random] << "> on " << target << std::endl;
 }

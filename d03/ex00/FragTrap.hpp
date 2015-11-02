@@ -2,6 +2,8 @@
 # define FRAGTRAP_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 class	FragTrap
 {
@@ -22,7 +24,7 @@ class	FragTrap
 		void	meleeAttack(std::string const & target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-		unsigned int	vaulthunter_dot_exe(std::string const & target);
+		void	vaulthunter_dot_exe(std::string const & target);
 };
 
 #endif
