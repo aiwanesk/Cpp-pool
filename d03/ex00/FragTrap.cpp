@@ -4,6 +4,13 @@ FragTrap::FragTrap(std::string name)
 {
 	this->_name = name;
 	std::cout << "Constructor called...\nFragTrap cretated\nMy name is " << this->_name << std::endl;
+	this->_hp = 100;
+	this->_max_hp = 100;
+	this->_ep = 100;
+	this->_level = 1;
+	this->_mele_at = 30;
+	this->_range_at = 20;
+	this->_armor = 5;
 }
 
 FragTrap::~FragTrap(void)
@@ -31,8 +38,8 @@ void	FragTrap::rangedAttack(std::string const & target)
 
 void	FragTrap::takeDamage(unsigned int amount)
 {
-	int		damage_dealt = this->_armor - amount;
-	std::cout << "FR4G-TP <" << this->_name << "> takes <" << damage_dealt << std::endl;
+	int		damage_dealt = amount - this->_armor ;
+	std::cout << "FR4G-TP <" << this->_name << "> takes <" << damage_dealt << ">" << std::endl;
 	this->_hp = this->_hp - damage_dealt;
 	if (_hp <= 0)
 	{

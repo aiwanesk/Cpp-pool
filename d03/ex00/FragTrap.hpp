@@ -8,15 +8,15 @@
 class	FragTrap
 {
 	private:
-		int		_hp = 100;
-		int		_max_hp = 100;
-		int		_ep = 100;
-		int		_max_ep = 100;
-		int		_level = 1;
+		int		_hp;
+		int		_max_hp;
+		int		_ep;
+		int		_max_ep;
+		int		_level;
 		std::string		_name;
-		int		_mele_at = 30;
-		int		_range_at = 20;
-		int		_armor = 5;
+		int		_mele_at;
+		int		_range_at;
+		int		_armor;
 	public:
 		FragTrap(std::string name);
 		~FragTrap(void);
