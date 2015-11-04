@@ -12,6 +12,7 @@ class	ScavTrap : public FragTrap
 		void	meleeAttack(std::string const & target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+	private:
 		void	challengeNewcomer(void);
 };
 

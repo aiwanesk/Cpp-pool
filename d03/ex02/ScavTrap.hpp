@@ -10,6 +10,7 @@ class	ScavTrap : public FragTrap
 		~ScavTrap(void);
 		void	rangedAttack(std::string const & target);
 		void	meleeAttack(std::string const & target);
+	private:
 		void	challengeNewcomer(void);
 };
 

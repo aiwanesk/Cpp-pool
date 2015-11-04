@@ -13,6 +13,7 @@ class	FragTrap : public ClapTrap
 		~FragTrap(void);
 		void	rangedAttack(std::string const & target);
 		void	meleeAttack(std::string const & target);
+	private:
 		void	vaulthunter_dot_exe(std::string const & target);
 };
 

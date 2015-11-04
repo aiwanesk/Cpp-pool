@@ -3,7 +3,7 @@
 
 #include "ClapTrap.hpp"
 
-class		NinjaTrap : public ScavTrap
+class		NinjaTrap : public ClapTrap
 {
 	public:
 		NinjaTrap(std::string name);
