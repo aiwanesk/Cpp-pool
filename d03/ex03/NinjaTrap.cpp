@@ -1,6 +1,6 @@
 #include "Ninjatrap.hpp"
 
-NinjaTrap::NinjaTrap(std::string name) : ClapTrap:ClapTrap(name)
+NinjaTrap::NinjaTrap(std::string name) : ScavTrap::ScavTrap(name)
 {
 	this->_name = name;
 	this->_type = "NinjaTrap";
@@ -17,4 +17,52 @@ NinjaTrap::NinjaTrap(std::string name) : ClapTrap:ClapTrap(name)
 NinjaTrap::~NinjaTrap(void)
 {
 	std::cout << "Destructor called\n" << this->_type << this->_name << " is destroyed" << std::endl;
+}
+
+void	NinjaTrap::ninjaShoebox(FragTrap & f)
+{
+	(void)f;
+	if ((this->_ep = this->_ep - 25) >= 0)
+		std::cout << "Kasjdhf" << std::endl;
+	else
+	{
+		this->_ep = 0;
+		std::cout << "Im out of mana brah!" << std::endl;
+	}
+}
+
+void	NinjaTrap::ninjaShoebox(NinjaTrap & n)
+{
+	(void)n;
+	if ((this->_ep = this->_ep - 25) >= 0)
+		std::cout << "Kasjdhf" << std::endl;
+	else
+	{
+		this->_ep = 0;
+		std::cout << "Im out of mana brah!" << std::endl;
+	}
+}
+
+void	NinjaTrap::ninjaShoebox(ScavTrap & s)
+{
+	(void)s;
+	if ((this->_ep = this->_ep - 25) >= 0)
+		std::cout << "Kasjdhf" << std::endl;
+	else
+	{
+		this->_ep = 0;
+		std::cout << "Im out of mana brah!" << std::endl;
+	}
+}
+
+void	NinjaTrap::ninjaShoebox(ClapTrap & c)
+{
+	(void)c;
+	if ((this->_ep = this->_ep - 25) >= 0)
+		std::cout << "Kasjdhf" << std::endl;
+	else
+	{
+		this->_ep = 0;
+		std::cout << "Im out of mana brah!" << std::endl;
+	}
 }
