@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap::ClapTrap(name)
 {
 	this->_name = name;
 	this->_type = "FragTrap";
@@ -20,14 +20,6 @@ FragTrap::~FragTrap(void)
 	std::cout << "FragTrap " << this->_name << " is destroyed!" << std::endl;
 }
 
-void	FragTrap::beRepaired(unsigned int amount)
-{
-	this->_hp = this->_hp + amount;
-	if (this->_hp > 100)
-		this->_hp = 100;
-	std::cout << "FR4G-TP <" << this->_name << "> is repaired is new amount of hp is " << this->_hp << std::endl;
-}
-
 void	FragTrap::meleeAttack(std::string const & target)
 {
 	std::cout << "FR4G-TP <" << this->_name << "> attacks <" << target << "> at melee, causing <" << this->_mele_at << "> points of damage !" << std::endl;
@@ -36,22 +28,6 @@ void	FragTrap::meleeAttack(std::string const & target)
 void	FragTrap::rangedAttack(std::string const & target)
 {
 	std::cout << "FR4G-TP <" << this->_name << "> attacks <" << target << "> at range, causing <" << this->_range_at << "> points of damage !" << std::endl;
-}
-
-void	FragTrap::takeDamage(unsigned int amount)
-{
-	int		damage_dealt = amount - this->_armor ;
-	std::cout << "FR4G-TP <" << this->_name << "> takes <" << damage_dealt << ">" << std::endl;
-	this->_hp = this->_hp - damage_dealt;
-	if (_hp <= 0)
-	{
-		this->_hp = 0;
-		FragTrap::~FragTrap();
-	}
-	else
-	{
-		std::cout << "FR4G-TP has " << this->_hp << " left" << std::endl;
-	}
 }
 
 void	FragTrap::vaulthunter_dot_exe(std::string const & target)
