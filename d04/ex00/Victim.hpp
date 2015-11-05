@@ -2,16 +2,21 @@
 # define VICTIM_HPP
 
 #include <iostream>
+#include <string>
 
 class		Victim
 {
-	protected:
-		std::string _name;
-		void	introduce(void); // pareil
-		void	getPolymorphed(void);// ca doit etre une methode 
 	public:
 		Victim(std::string name);
 		~Victim(void);
+		Victim(Victim const & src, std::string name);
+		Victim & operator=(Victim const & rhs);
+		std::string		introduce(void) const;
+		virtual void getPolymorphed(void) const;
+	protected:
+			std::string _name;
 };
+
+std::ostream & operator<<(std::ostream & out, Victim const & in);
 
 #endif

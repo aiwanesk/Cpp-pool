@@ -2,19 +2,25 @@
 # define SORCERER_HPP
 
 #include <iostream>
+#include <string>
 #include "Victim.hpp"
 
-class		Sorcerer
+class			Sorcerer
 {
-	protected:
+	public:
+		Sorcerer(std::string name, std::string title);
+		~Sorcerer(void);
+		Sorcerer(void);
+		Sorcerer (Sorcerer const & src, std::string name, std::string title);
+		Sorcerer & operator=(Sorcerer const &rhs);
+		void polymorph(Victim const &) const;
+		std::string introduce(void) const;
+
+	private:
 		std::string _name;
 		std::string _title;
-		void	introduce(void);
-		void	polymorph(Victim const &);
-		//penser a overload pour pouvoir sortir sur toutes les sorties
-	public:
-		Sorcerer(std::string name, std::string type);
-		~Sorcerer(void);
 };
+
+std::ostream & operator<<(std::ostream & out, Sorcerer const & in);
 
 #endif
