@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Weapon.hpp"
+#include "Enemy.hpp"
 
 class			Character
 {
@@ -20,7 +21,11 @@ class			Character
 		void	recoverAP();
 		void	equip(Weapon*);
 		void	attack(Enemy*);
+		int		getAp();
+		std::string 	showatt(void);
 		std::string virtual getName() const;
 };
+
+std::ostream & operator<<(std::ostream & out, Character const & in);
 
 #endif
