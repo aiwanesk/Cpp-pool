@@ -10,7 +10,6 @@ class			Hero
 		int		x;
 		int		damage;
 		int		y;
-		int		tab[10][2];
 		std::string name;
 	public:
 		Hero(void);
@@ -21,11 +20,14 @@ class			Hero
 
 		int		getX();
 		int		getY();
+		int		tab[10][2];
 		int		getHp(void);
 
+		void	init_tab(Hero h);
 		void	left();
-		void	right();
+		void	right(int max);
 		void	shoot();
+		void	movebullet();
 		Hero & operator-=( int v);
 };
 

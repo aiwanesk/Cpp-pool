@@ -5,8 +5,8 @@ Hero::Hero(void)
 	this->name = "Hero";
 	this->hp = 3;
 	this->damage = 2;
-	this->x = 72;//prendre la taille de la fenetre
-	this->y = 43;//prendre la taille de la fenetre et la diviser par deux;
+	this->x = 0;//prendre la taille de la fenetre
+	this->y = 0;//prendre la taille de la fenetre et la diviser par deux;
 }
 
 Hero::Hero(std::string name, int h, int d, int x, int y)
@@ -60,17 +60,55 @@ int			Hero::getY()
 
 void		Hero::left()
 {
-	if (this->x > 0)
+	if (this->x > 1)
 		this->x -= 1;
 }
 
-void		Hero::right()
+void		Hero::right(int max)
 {
-	if (this->x < 100)//taille max de la fenetre
+	if (this->x < max - 2)//taille max de la fenetre
 		this->x +=1;
+}
+
+void		Hero::init_tab(Hero h){
+	int i = 0;
+	while (h.tab[i]){
+		h.tab[i][0] = 0;
+		h.tab[i][1] = -1;
+		i++;
+	}
 }
 
 void		Hero::shoot()
 {
-	
+	static bool t = 0;
+	bool shoot = 0;
+	if (t == 0){
+		init_tab(*this);
+		t = 1;
+		}
+	int i = 0;
+	while (i < 10)
+	{
+		if (tab[i][1] != -1 && shoot == 0)
+		{
+			this->tab[i][0] = this->getX();
+			this->tab[i][1] = this->getY() + 1;
+			shoot = 1;
+		}
+		i++;
+	}
+}
+
+void	Hero::movebullet()
+{
+	int i = 0;
+	while (i < 10)
+	{
+	if (tab[i][1] != -1)
+		this->tab[i][1] += 1;
+	if (this->tab[i][0] == 100)//max_size
+		tab[i][1] = -1;
+	i++;
+	}
 }

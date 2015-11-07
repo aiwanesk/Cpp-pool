@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <ctime>
+#include <ncurses.h>
 
 class		Unit
 {
@@ -14,19 +15,22 @@ class		Unit
 		int				hp;
 		int				x;
 		int				y;
+		int			sens;
 	public:
 		Unit(void);
 		//Unit(Unit const & src);
-		Unit & operator=(Unit const & rhs);
-		Unit(std::string, int damage, int hp, int x, int y);
+		//Unit & operator=(Unit const & rhs);
+		Unit(std::string, int damage, int hp, int x, int y, bool alive);
 		~Unit(void);
 
 		int		getX();
 		int		getY();
 
+		void	destroy();
 		int		spawn();
 		Unit	create();
-		void	move();
+		void	move(int sens);
+		void	setY(int v);
 };
 
 #endif
