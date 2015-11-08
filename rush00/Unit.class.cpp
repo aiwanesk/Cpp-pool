@@ -63,8 +63,8 @@ void	Unit::setY(int v)
 	this->y = y - v;
 	if (this->y == 0){
 		printf("You lost cause::collide\n");
-//		endwin();
-//		exit(0);
+		endwin();
+		exit(0);
 	}
 }
 

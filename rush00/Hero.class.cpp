@@ -72,7 +72,7 @@ void		Hero::right(int max)
 
 void		Hero::init_tab(Hero h){
 	int i = 0;
-	while (h.tab[i]){
+	while (i < 10){
 		h.tab[i][0] = 0;
 		h.tab[i][1] = -1;
 		i++;
@@ -90,25 +90,31 @@ void		Hero::shoot()
 	int i = 0;
 	while (i < 10)
 	{
-		if (tab[i][1] != -1 && shoot == 0)
+		if (tab[i][1] == -1 && shoot == 0)
 		{
 			this->tab[i][0] = this->getX();
-			this->tab[i][1] = this->getY() + 1;
+			this->tab[i][1] = this->getY() - 1;
 			shoot = 1;
 		}
 		i++;
 	}
 }
 
-void	Hero::movebullet()
+void	Hero::movebullet(WINDOW *f)
 {
 	int i = 0;
 	while (i < 10)
 	{
-	if (tab[i][1] != -1)
-		this->tab[i][1] += 1;
-	if (this->tab[i][0] == 100)//max_size
+		mvwprintw(f, 40, 40, "SHOOT");
+	if (tab[i][1] != -1){
+		//this->tab[i][0] += 1;
+		mvwprintw(f, 40, 40, "O");
+		this->tab[i][1] -= 1;
+		}
+	if (this->tab[i][1] == -1){//max_size
+		mvwprintw(f, 40, 40, "P");
 		tab[i][1] = -1;
+	}
 	i++;
 	}
 }

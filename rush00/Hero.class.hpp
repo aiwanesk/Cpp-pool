@@ -2,6 +2,7 @@
 # define HERO_CLASS_HPP
 
 #include <iostream>
+#include <ncurses.h>
 
 class			Hero
 {
@@ -27,7 +28,7 @@ class			Hero
 		void	left();
 		void	right(int max);
 		void	shoot();
-		void	movebullet();
+		void	movebullet(WINDOW *f);
 		Hero & operator-=( int v);
 };
 

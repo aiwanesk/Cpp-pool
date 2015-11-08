@@ -54,10 +54,12 @@ int main(void) {
 	Unit unit[40];
 	int get, i, sens;
 	sens = 1;
+	start_color();
 	//init la fenetre les deux windoews
 	initscr();
 	noecho();
 	curs_set(FALSE);
+	keypad(stdscr, TRUE);
 	getmaxyx(stdscr, parent_y, parent_x);
 	WINDOW *field = newwin(parent_y - score_size, parent_x, 0, 0);
 	WINDOW *score = newwin(score_size, parent_x, parent_y - score_size, 0);
@@ -74,13 +76,13 @@ int main(void) {
 	hero = Hero("Hero", 1, 1, parent_x - 2, parent_y - score_size - 2);
 	i = 0;
 	//init les ennemies
-	while (i < 40)
+//	while (i < 40)
+	while(i < 0)
 	{
 		unit[i] = Unit("Unit", 0,0,3, 3, 1);
 		i++;
 	}
 	while(hero.getHp() > 0) {
-		clear();
 		getmaxyx(stdscr, new_y, new_x);
 		//pour resize si on modifie la taille pendant l exec
 		if (new_y != parent_y || new_x != parent_x) {
@@ -89,14 +91,20 @@ int main(void) {
 			wresize(field, new_y - score_size, new_x);
 			wresize(score, score_size, new_x);
 			mvwin(score, new_y - score_size, 0);
-			wclear(stdscr);
+		}
 			wclear(field);
 			wclear(score);
+		timeout(100);
+		if ((get = getch()) != ERR){
+			if (get == 97) //a
+				hero.right(parent_x);
+			else if (get == 100)//d
+				hero.left();
+			else if (get == 112) //p
+				hero.shoot();
+		}
 			draw_borders(field);
 			draw_borders(score);
-		}
-		wrefresh(field);
-		wrefresh(score);
 		player_score++;
 		mvwprintw(field, hero.getY(), hero.getX(), "H");
 		mvwprintw(score, 1, 1, "%d", player_score / 100000);
@@ -115,24 +123,17 @@ int main(void) {
 			}
 			i++;
 		}
-		clear();
 		// c sense boucler et recuperer les inputs de manieres non bloquantes
-		//timeout(100);
-		//if ((get = getch()) != ERR){
-	//		if (get == 97) //a
-	//			hero.right(parent_x);
-	//		else if (get == 100)//d
-	//			hero.left();
-	//		else if (get == 112) //p
-	//			hero.shot();
-	//	}
 		i = 0;
-		while (hero.tab[i]){
-			mvwprintw(field, hero.tab[i][0], hero.tab[i][1], "|");
+		while (i < 10){
+			if(hero.tab[i][1] != -1)
+				mvwprintw(field, hero.tab[i][1], hero.tab[i][0], "|");
 			i++;
 		}
-	//	hero.movebullet();
-		collide(hero, (Unit *)unit);
+		hero.movebullet(field);
+		wrefresh(field);
+		wrefresh(score);
+	//	collide(hero, (Unit *)unit);
 		}
 		delwin(field);
 		delwin(score);
